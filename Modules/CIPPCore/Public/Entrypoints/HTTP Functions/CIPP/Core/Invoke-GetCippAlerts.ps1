@@ -52,7 +52,7 @@ function Invoke-GetCippAlerts {
                 link  = 'https://docs.cipp.app/setup/installation/owntenant'
                 type  = 'error'
             })
-    }<#
+    }
     if (!(![string]::IsNullOrEmpty($env:WEBSITE_RUN_FROM_PACKAGE) -or ![string]::IsNullOrEmpty($env:DEPLOYMENT_STORAGE_CONNECTION_STRING)) -and $env:AzureWebJobsStorage -ne 'UseDevelopmentStorage=true' -and $env:NonLocalHostAzurite -ne 'true') {
         $Alerts.Add(
             @{
@@ -61,7 +61,7 @@ function Invoke-GetCippAlerts {
                 link  = 'https://docs.cipp.app/setup/installation/runfrompackage'
                 type  = 'warning'
             })
-    }#>
+    }
     if ($Rows) { $Rows | ForEach-Object { $Alerts.Add($_) } }
     $Alerts = @($Alerts)
 
